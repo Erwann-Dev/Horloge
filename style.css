@@ -130,9 +130,15 @@ body {
     position: absolute;
     height: 100%;
     width: 100%;
-    background-color: #05aa0d;
+    background-color: #9aaa05;
     margin: auto;
     top: 0;
     bottom: 0;
     border-radius: 5px;
 }
+
+ #charge{
+     height: 100%;
+     margin-left: 25%;
+     visibility: hidden;
+ }

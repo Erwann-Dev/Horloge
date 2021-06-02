@@ -47,13 +47,29 @@ function clock() {
 		day[j] + ' ' + ndate + ' ' + ' ' + month[nm] + ' ' + years;
 	document.querySelector('#day2').innerHTML =
 		day[j] + ' ' + ndate + ' ' + ' ' + month[nm] + ' ' + years;
+
 	navigator.getBattery().then(function (battery) {
 		document.querySelector('.battery_percent').innerHTML =
 			battery.level.toFixed(2) * 100 + '%';
 		document.querySelector('.bat2').style.width =
 			battery.level.toFixed(2) * 100+"%";
+			if (battery.level.toFixed(2) * 100 < 75){
+				document.querySelector('.bat2').style.backgroundColor= "##ddff00";
+			}
+			else if (battery.level.toFixed(2) * 100 < 50){
+				document.querySelector('.bat2').style.backgroundColor= "##ffb700";
+			}
+			else if (battery.level.toFixed(2) * 100 < 25){
+				document.querySelector('.bat2').style.backgroundColor= "##ff2200";
+			}
+			if (battery.charging == true) {
+				document.querySelector('#charge').style.visibility= 'visible';
+			}
+			else {
+				document.querySelector('#charge').style.visibility= 'hidden';
+			}
 
-		console.log('Battery charging ? ' + (battery.charging ? 'Yes' : 'No'));
+		console.log('Battery charging ? ' + (battery.charging));
 		console.log('Battery level: ' + battery.level.toFixed(2) * 100 + '%');
 		console.log('Battery charging time: ' + battery.chargingTime + ' seconds');
 		console.log(
