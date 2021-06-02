@@ -91,5 +91,4 @@ function toHHMMSS(secs) {
 		.filter((v, i) => v !== '00' || i > 0)
 		.join(':');
 }
-toHHMMSS(3600);
 setInterval(clock, inc);
