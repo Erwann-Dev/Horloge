@@ -3,7 +3,6 @@ clock();
 function clock() {
 	const date = new Date();
 	let j = date.getDay();
-	console.log(j);
 	var day = [
 		'Dimanche',
 		'Lundi',
@@ -61,8 +60,14 @@ function clock() {
 			document.querySelector('.bat2').style.backgroundColor = '##ff2200';
 		}
 		if (battery.charging == true) {
+			if (battery.level.toFixed(2) * 100 == 100) {
+				document.querySelector('.bat2').style.animation = '';
+			} else {
+				document.querySelector('.bat2').style.animation = 'charge 2s infinite';
+			}
 			document.querySelector('#charge').style.visibility = 'visible';
 		} else {
+			document.querySelector('.bat2').style.animation = '';
 			document.querySelector('#charge').style.visibility = 'hidden';
 		}
 
