@@ -48,19 +48,20 @@ function clock() {
 		day[j] + ' ' + ndate + ' ' + ' ' + month[nm] + ' ' + years;
 
 	navigator.getBattery().then(function (battery) {
+		console.log('Battery level: ' + (battery.level * 100).toFixed() + '%');
 		document.querySelector('.battery_percent').innerHTML =
-			battery.level.toFixed(2) * 100 + '%';
+			(battery.level * 100).toFixed() + '%';
 		document.querySelector('.bat2').style.width =
-			battery.level.toFixed(2) * 100 + '%';
-		if (battery.level.toFixed(2) * 100 < 75) {
+			(battery.level * 100).toFixed() + '%';
+		if ((battery.level * 100).toFixed() < 75) {
 			document.querySelector('.bat2').style.backgroundColor = '##ddff00';
-		} else if (battery.level.toFixed(2) * 100 < 50) {
+		} else if ((battery.level * 100).toFixed() < 50) {
 			document.querySelector('.bat2').style.backgroundColor = '##ffb700';
-		} else if (battery.level.toFixed(2) * 100 < 25) {
+		} else if ((battery.level * 100).toFixed() < 25) {
 			document.querySelector('.bat2').style.backgroundColor = '##ff2200';
 		}
 		if (battery.charging == true) {
-			if (battery.level.toFixed(2) * 100 == 100) {
+			if ((battery.level * 100).toFixed() == 100) {
 				document.querySelector('.bat2').style.animation = '';
 			} else {
 				document.querySelector('.bat2').style.animation = 'charge 2s infinite';
@@ -77,7 +78,6 @@ function clock() {
 
 		battery.addEventListener('levelchange', function () {
 			document.querySelector('.battery_percent').innerHTML = battery.level;
-			console.log('Battery level: ' + battery.level.toFixed(2) + '%');
 		});
 	});
 }
