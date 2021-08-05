@@ -10,7 +10,7 @@ function clock() {
 		'Mercredi',
 		'Jeudi',
 		'Vendredi',
-		'Samedi',
+		'Samedi',	
 	];
 	var month = [
 		'Janvier',
